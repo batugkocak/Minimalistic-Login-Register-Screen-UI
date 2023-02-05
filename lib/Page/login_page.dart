@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../Widget/text_field.dart';
 import '../Widget/button.dart';
 import '../Widget/square_tile.dart';
+import './register_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -33,7 +34,6 @@ class LoginPage extends StatelessWidget {
                 ),
                 //Logo
                 const Icon(Icons.account_balance_sharp, size: 100.0),
-
                 SizedBox(
                   height: screenHeight / 20,
                 ),
@@ -77,14 +77,14 @@ class LoginPage extends StatelessWidget {
                   height: screenHeight / 100,
                 ),
                 //SignIn Button
-                MyButton(signUserIn),
+                MyButton("Sign In", signUserIn),
 
                 SizedBox(
                   height: screenHeight / 100,
                 ),
                 //or continue with
                 Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -128,18 +128,26 @@ class LoginPage extends StatelessWidget {
 
                 //Not a member? Sign Up
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Not a member? ",
-                      style: TextStyle(color: Colors.grey.shade700),
-                    ),
-                    const Text(
-                      "Register Now!",
-                      style: TextStyle(color: Colors.blueAccent),
-                    )
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignInPage()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Not a member? ",
+                        style: TextStyle(color: Colors.grey.shade700),
+                      ),
+                      const Text(
+                        "Register Now!",
+                        style: TextStyle(color: Colors.blueAccent),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
